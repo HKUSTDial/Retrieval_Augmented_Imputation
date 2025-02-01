@@ -1,0 +1,12 @@
+elasticsearch==8.9.0
+faiss-cpu==1.7.4
+farm-haystack==1.20.0
+hydra-core==1.3.2
+hydra-submitit-launcher==1.2.0
+jsonlines==4.0.0
+numpy==1.24.4
+torch==2.0.1
+torchaudio==2.0.2
+torchmetrics==1.4.0
+torchvision==0.15.2
+transformers==4.32.1
