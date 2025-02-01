@@ -5,7 +5,7 @@ from collections import defaultdict
 import openai
 
 
-openai.api_key = "sk-xxxxxx"
+openai.api_key = "xxxxxxxxx"
 openai.api_base = "xxxxx"
 
 

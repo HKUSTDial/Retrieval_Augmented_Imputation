@@ -7,11 +7,10 @@ from collections import defaultdict
 import openai
 
 
-openai.api_key = "sk-xxxxxx"
+openai.api_key = "xxxxxxxxx"
 openai.api_base = "xxxxx"
 
 
-# [1, 4, 9, 10, 12, 15, 22, 23, 26, 27, 29, 31, 32, 33, 34, 35, 36, 37, 38, 39]
 
 class ReRanker():
     def __init__(self, path, samples, window_size, startq):
