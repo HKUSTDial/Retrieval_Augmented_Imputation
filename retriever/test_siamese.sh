@@ -1,0 +1,9 @@
+CUDA_VISIBLE_DEVICES=0 python evaluate.py \
+  --model_name='siamese' \
+  --dataset_name='business' \
+  --num_retrieved=100 \
+  --best_model_file='epoch_1_step_10000' \
+  --save_model_dir='/home/yangchenyu/Data_Imputation/retriever/model_checkpoints/' \
+  --default_path='/home/yangchenyu/pre-trained-models/bert-base-uncased' \
+  --temp_index_path='/home/yangchenyu/Data_Imputation/retriever/index' \
+  --data_path='/home/yangchenyu/Data_Imputation/data/business' 

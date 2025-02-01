@@ -1,0 +1,14 @@
+CUDA_VISIBLE_DEVICES=5,6,7 python train_siamese.py \
+  --file_dir='pretraining_data' \
+  --train_filename='train.json' \
+  --dev_filename='dev.json' \
+  --embedding_model='bert-base-uncased' \
+  --save_dir='checkpoints' \
+  --training_epochs=3 \
+  --batch_size=16 \
+  --max_seq_len=256 \
+  --num_positives=1 \
+  --num_hard_negatives=7 \
+  --evaluate_every=10000000 \
+  --checkpoint_every=10000 \
+  --checkpoint_root_dir='checkpoints'
