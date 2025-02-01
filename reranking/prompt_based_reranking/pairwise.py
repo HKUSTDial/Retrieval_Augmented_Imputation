@@ -50,8 +50,6 @@ class ReRanker():
         self.step_size = 1
         self.round = 1
 
-        # self.client = OpenAI(api_key="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")
-
         self.startq = startq
 
     def chat(self, input_data, model="gpt-4o-mini"):
