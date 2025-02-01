@@ -2,7 +2,7 @@
 # Data Imputation with Limited Data Redundancy Using Data Lakes
 
 ## Introduction
-Data imputation is critical for many data science applications. Traditional methods, leveraging statistics, integrity constraints, or machine learning, depend on sufficient within-table data redundancy to infer missing values. However, real-world datasets often lack such redundancy, necessitating external data sources. To address this challenge, we introduce **RetFill**, a novel retrieval-augmented imputation framework that integrates large language models (LLMs) and data lakes.
+Data imputation is critical for many data science applications. Traditional methods, leveraging statistics, integrity constraints, or machine learning, depend on sufficient within-table data redundancy to infer missing values. However, real-world datasets often lack such redundancy, necessitating external data sources. To address this challenge, we introduce **LakeFill**, a novel retrieval-augmented imputation framework that integrates large language models (LLMs) and data lakes.
 
 This repository contains the implementation for the paper:
 **Data Imputation with Limited Data Redundancy Using Data Lakes**
