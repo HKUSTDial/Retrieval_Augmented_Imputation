@@ -5,9 +5,8 @@ from collections import defaultdict
 import openai
 
 
-openai.api_key = "xxxxxxxxx"
-openai.api_base = "xxxxx"
-
+openai.api_key = "OPENAI_API_KEY"
+openai.api_base = "OPENAI_API_BASE"
 
 class ReRanker():
     def __init__(self, path, samples, window_size, startq):
