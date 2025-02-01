@@ -255,7 +255,7 @@ class ShowMovieImputation:
 imputer = ShowMovieImputation(
     model_name="gpt-4o-mini",
     api_url="https://vip.yi-zhan.top/v1/chat/completions",
-    api_key="sk-pP1nu21e5A9Ucg9bB82c0dC07d334b9aA7A0Bc26F3Eb2f72",
+    api_key="OPENAI_API_KEY",
     retrieval_file="/home/yangchenyu/Data_Imputation/retrieval_results/first_stage/BM25_top100_res_with_score_show_movie.tsv",  # 指定检索文件路径
     top_k=5  # 指定top_k参数
 )

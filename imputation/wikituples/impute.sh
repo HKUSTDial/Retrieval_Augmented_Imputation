@@ -1,6 +1,6 @@
 python impute_wo_evidence.py \
     --api_url "https://vip.yi-zhan.top/v1/chat/completions" \
-    --api_key "sk-KjpoIvEy7QsjgUzdAc76D93b70B34414BdAc889c3e8d7518" \
+    --api_key "OPENAI_API_KEY" \
     --model "gpt-4o" \
     --temperature 0.3 \
     --data_dir "/home/yangchenyu/Data_Imputation/data/wikituples" \

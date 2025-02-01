@@ -480,7 +480,7 @@ def main():
     parser = argparse.ArgumentParser()
     # API相关参数
     parser.add_argument('--api_url', type=str, default="https://vip.yi-zhan.top/v1/chat/completions")
-    parser.add_argument('--api_key', type=str, default="sk-pP1nu21e5A9Ucg9bB82c0dC07d334b9aA7A0Bc26F3Eb2f72")
+    parser.add_argument('--api_key', type=str, default="OPENAI_API_KEY")
     parser.add_argument('--model', type=str, default="gpt-4o-mini")
     parser.add_argument('--temperature', type=float, default=0.3)
     

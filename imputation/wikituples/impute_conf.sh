@@ -1,5 +1,5 @@
 python impute_w_confidence.py \
-    --api_key "sk-pP1nu21e5A9Ucg9bB82c0dC07d334b9aA7A0Bc26F3Eb2f72" \
+    --api_key "OPENAI_API_KEY" \
     --num_threads 32 \
     --model gpt-4o-mini \
     --missing_tables_path /home/yangchenyu/Data_Imputation/data/wikituples/missing_tables.jsonl \

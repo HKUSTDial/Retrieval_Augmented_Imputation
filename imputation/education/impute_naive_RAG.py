@@ -12,7 +12,7 @@ import os
 url = "https://vip.yi-zhan.top/v1/chat/completions" 
 openai_headers = { 
     "Content-Type": "application/json", 
-    "Authorization": "Bearer sk-pP1nu21e5A9Ucg9bB82c0dC07d334b9aA7A0Bc26F3Eb2f72" 
+    "Authorization": "Bearer OPENAI_API_KEY" 
 } 
 
 

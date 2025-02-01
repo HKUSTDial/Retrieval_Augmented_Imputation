@@ -18,7 +18,7 @@ import time
 url = "https://vip.yi-zhan.top/v1/chat/completions" 
 openai_headers = { 
     "Content-Type": "application/json", 
-    "Authorization": "Bearer sk-pP1nu21e5A9Ucg9bB82c0dC07d334b9aA7A0Bc26F3Eb2f72" 
+    "Authorization": "Bearer OPENAI_API_KEY" 
 } 
 
 
@@ -293,7 +293,7 @@ class CricketPlayersImputation:
 imputer = CricketPlayersImputation(
     model_name="gpt-4o",
     api_url="https://vip.yi-zhan.top/v1/chat/completions",
-    api_key="sk-pP1nu21e5A9Ucg9bB82c0dC07d334b9aA7A0Bc26F3Eb2f72",
+    api_key="OPENAI_API_KEY",
     retrieval_file="/home/yangchenyu/Data_Imputation/retrieval_results/first_stage/BM25_top100_res_with_score_cricket_players.tsv",
     top_k=5,
     retriever='BM25'
