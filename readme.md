@@ -44,9 +44,7 @@ pip install -r requirements.txt
 ### Retrieval
 We train a retriever using contrastive learning and synthetic training data to encode tuples into embeddings. These embeddings are indexed in a vector database, enabling efficient similarity search across heterogeneous data lakes.
 
-To train the retriever on your dataset:
-1. Modify the [`train_siamese.sh`](./retriever/train_siamese.sh) script, setting `file_dir` to your pretraining data location.
-2. Execute the script:
+To train the retriever on your dataset, run the [`train_siamese.sh`](./retriever/train_siamese.sh) script:
 
 ```bash
 #!/bin/bash
