@@ -2,28 +2,6 @@
 from typing import Callable, Dict, List, Optional
 from haystack.schema import Document
 
-def calculate_mrr(topk_pids, qrels, K):
-    mrr_sum = 0.0
-    num_queries = len(topk_pids)
-
-    for qid, retrieved_docs in topk_pids.items():
-        query_results = set(retrieved_docs[:K])
-        query_qrels = set(qrels[qid])
-
-        first_relevant_rank = None
-
-        # 遍历检索结果，找到第一个相关文档的排名
-        for rank, pid in enumerate(query_results):
-            if pid in query_qrels:
-                first_relevant_rank = rank + 1  # 排名从1开始
-                break
-
-        if first_relevant_rank is not None:
-            mrr_sum += 1.0 / first_relevant_rank
-
-    mrr = mrr_sum / num_queries
-    print("MRR@{} =".format(K), mrr)
-    return mrr
 
 def calculate_recall(topk_pids, qrels, K):
     recall_sum = 0.0
@@ -37,7 +15,7 @@ def calculate_recall(topk_pids, qrels, K):
         recall = len(intersection) / len(relevant_docs) if len(relevant_docs) > 0 else 0.0
         recall_sum += recall
 
-    # 计算平均Recall Rate
+    # Calculate average Recall Rate
     recall_rate = recall_sum / num_queries
     print("Recall@{} =".format(K), recall_rate)
     return recall_rate
@@ -53,28 +31,13 @@ def calculate_success(topk_pids, qrels, K):
         if relevant_docs.intersection(topK_docs):
             success_at_k.append(1)
 
-    success_at_k_avg = sum(success_at_k) / len(qrels)
+    success_at_k_avg = sum(success_at_k) / len(topk_pids)
     success_at_k_avg = round(success_at_k_avg, 3)
     
     print("Success@{} =".format(K), success_at_k_avg)
     return success_at_k_avg
 
-def calculate_precision(topk_pids, qrels, K):
-    precision = 0.0
-    num_queries = len(topk_pids)
 
-    for qid, retrieved_docs in topk_pids.items():
-        topK_docs = set(retrieved_docs[:K])
-        relevant_docs = set(qrels[qid])
-
-        intersection = relevant_docs.intersection(retrieved_docs)
-        precision += len(intersection) / len(retrieved_docs)
-
-    # 计算平均Recall Rate
-    precision /= num_queries
-    print("Precision@{} =".format(K), precision)
-    return precision
- 
 def normalize_list(input_list):
     print(input_list)
     max_value = max(input_list)

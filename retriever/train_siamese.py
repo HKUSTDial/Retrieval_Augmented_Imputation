@@ -1,6 +1,6 @@
 import logging
 import argparse 
-from model import SiameseRetriever
+from src.dense import SiameseRetriever
 from haystack.utils import fetch_archive_from_http
 from haystack.document_stores import InMemoryDocumentStore
 import torch
@@ -90,14 +90,6 @@ def main():
         embedding_model=args.embedding_model,
         max_seq_len=args.max_seq_len,
     )
-
-    '''
-    retriever.train(
-        training_data=training_data,
-        n_epochs=args.training_epochs,
-        batch_size=args.batch_size,
-    )
-    '''
     
     retriever.train(
         data_dir=args.file_dir,

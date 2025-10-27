@@ -1,9 +1,13 @@
-CUDA_VISIBLE_DEVICES=0 python evaluate.py \
+#!/bin/bash
+
+export CUDA_VISIBLE_DEVICES=0
+
+# Run evaluation
+python evaluate.py \
   --model_name='siamese' \
-  --dataset_name='business' \
+  --dataset_name='show_movie' \
   --num_retrieved=100 \
-  --best_model_file='epoch_1_step_10000' \
-  --save_model_dir='/home/yangchenyu/Data_Imputation/retriever/model_checkpoints/' \
-  --default_path='/home/yangchenyu/pre-trained-models/bert-base-uncased' \
-  --temp_index_path='/home/yangchenyu/Data_Imputation/retriever/index' \
-  --data_path='/home/yangchenyu/Data_Imputation/data/business' 
+  --save_model_dir='./model_checkpoints/siamese_model' \
+  --default_path='./pretrained_models/bert-base-uncased' \
+  --temp_index_path='./index' \
+  --data_path='../data/show_movie' 

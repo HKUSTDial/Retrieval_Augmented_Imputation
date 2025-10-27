@@ -2,8 +2,6 @@
 
 This project is built upon the [original Reranker project](https://github.com/luyug/Reranker), which provides a lightweight, effective and efficient package for training and deploying deep language model reranker in information retrieval (IR), question answering (QA) and other NLP tasks.
 
-
-
 ## Installation and Dependencies
 
 ### Installing Reranker
@@ -27,4 +25,13 @@ For development purposes, install Reranker in editable mode:
 ```sh
 pip install -e .
 ```
+
+## Pretrained Model
+
+We use the [BERT-based reranker](https://huggingface.co/Luyu/bert-base-mdoc-bm25) to initialize our reranker. You can download the model and specify its local path in `train.sh`.
+
+
+## Usage
+
+See the main README in the parent directory for training and testing instructions.
 

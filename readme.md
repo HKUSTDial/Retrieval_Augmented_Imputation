@@ -8,7 +8,7 @@ This repository contains the implementation for the paper:
 **Data Imputation with Limited Data Redundancy Using Data Lakes**
 
 ## Data & Model
-To advance research in retrieval-augmented imputation, we introduce **mvBench**, the first large-scale benchmark in this domain. mvBench consists of **7,784 incomplete tuples** and **2.8 million tuples** sourced from a data lake. Detailed dataset descriptions and analyses are available in our paper. We also release our pretraining dataset and retriever model checkpoints for further research.
+To advance research in retrieval-augmented imputation, we introduce **mvBench**, the first large-scale benchmark in this domain. mvBench consists of **9,009 incomplete tuples** and **3.39 million tuples** sourced from a data lake. Detailed dataset descriptions and analyses are available in our paper. We also release our pretraining dataset and retriever model checkpoints for further research.
 
 Access the datasets and pretrained retriever model here:
 - [**mvBench and Pretraining Materials**](https://hkustgz-my.sharepoint.com/:f:/g/personal/cyang662_connect_hkust-gz_edu_cn/En4KpS23e6RGmYNAO_h-MVEBPA-tKEHkVzs8dZzxmu5iMw?e=PdZpm9)
@@ -23,6 +23,8 @@ mvBench is constructed from the following data sources:
 1. **WikiTables-TURL** (Deng et al., 2022): Available in [this GitHub repository](https://github.com/sunlab-osu/TURL/tree/release_ongoing) under Apache License 2.0.
 2. **Show Movie and Cricket Players** (Ahmad et al., 2023): Available in [this GitHub repository](https://github.com/qcri/RetClean).
 3. **Education Data**: Collected from the [Chicago Open Data Portal](https://data.cityofchicago.org/).
+4. **FIFA**: Sourced from [Kaggle FIFA World Cup dataset](https://www.kaggle.com/abecklas/fifa-world-cup).
+5. **Restaurants**: Sourced from [Kaggle Zomato Bangalore Restaurants dataset](https://www.kaggle.com/datasets/himanshupoddar/zomato-bangalore-restaurants), used in previous works including [IPM](https://github.com/EliasMei/IPM/blob/main/README.md) and [Can foundation model](https://arxiv.org/pdf/2205.09911).
 
 After collection, the data is processed and annotated to form mvBench. Each dataset includes:
 - **queries.tsv**: Tuples with missing values (marked as "N/A"), each assigned a unique ID.
@@ -81,7 +83,7 @@ The reranker refines retrieved tuples using a fine-grained comparison, ensuring 
 
 #### Steps:
 1. Set up the environment following instructions in [reranker README](reranking/reranker/readme.md).
-2. Construct training groups using [`construct_training_groups.py`](reranking/annotation/construct_training_groups.py).
+2. Construct training groups using [`obtain_training_data.sh`](reranking/annotation/obtain_training_data.sh).
 3. Train the reranker:
 
 ```bash
@@ -116,7 +118,45 @@ CUDA_VISIBLE_DEVICES=3 python train.py \
 4. Test the reranker using `test.sh`.
 
 ### Data Imputation
-We propose a **two-stage confidence-aware imputation approach** that ensures accurate and context-aware missing value imputation. The **Imputation** directory contains dataset-specific imputation implementations.
+We propose a **two-stage confidence-aware imputation approach** that ensures accurate and context-aware missing value imputation. The system uses large language models to perform intelligent imputation based on retrieved relevant data from the data lake.
+
+#### Running Data Imputation
+To perform data imputation using the `impute.sh` script:
+
+1. **Configure the script**: Edit [`impute.sh`](./imputation/impute.sh) to set your parameters:
+```bash
+#!/bin/bash
+MODEL="gpt-4o"  # or "gpt-4", "gpt-3.5-turbo"
+API_URL="your_api_url_here"  # Your OpenAI API endpoint
+API_KEY="your_api_key_here"  # Your OpenAI API key
+
+BASE_PATH="/path/to/your/data"  # Path to your dataset
+DATASET="restaurants"  # Dataset name (restaurants, fifa, etc.)
+TOP_K=5  # Number of top retrieved results to use
+THRESHOLD=0.9  # Confidence threshold for strict mode
+
+# Retrieval results file path
+RETRIEVAL_RESULTS="/path/to/your/retrieval/results.txt"
+```
+
+2. **Run the imputation**:
+```bash
+cd imputation
+chmod +x impute.sh
+./impute.sh
+```
+
+**Key Parameters:**
+- `--model`: LLM model to use for imputation (gpt-4o, gpt-4, gpt-3.5-turbo)
+- `--api_url`: OpenAI API endpoint URL
+- `--api_key`: Your OpenAI API key
+- `--data_path`: Path to the dataset directory containing queries.tsv, collection.tsv, etc.
+- `--retrieval_results_path`: Path to retrieval results from the retriever
+- `--dataset`: Name of the dataset (restaurants, fifa, education, etc.)
+- `--top_k`: Number of top retrieved tuples to consider for imputation
+- `--threshold`: Confidence threshold (0.0-1.0) for using strict mode results
+- `--missing_columns`: Specific columns to impute (optional, auto-detects N/A values if not specified)
+
 
 ---
 For further details, refer to our paper or contact us for additional support.

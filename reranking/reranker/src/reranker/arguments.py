@@ -48,6 +48,7 @@ class DataArguments:
     )
     pred_id_file: str = field(default=None)
     rank_score_path: str = field(default=None, metadata={"help": "where to save the match score"})
+    qrel_path: str = field(default=None, metadata={"help": "Path to qrel file for evaluation"})
     max_len: int = field(
         default=128,
         metadata={
