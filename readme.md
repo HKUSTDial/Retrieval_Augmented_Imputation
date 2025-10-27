@@ -23,8 +23,9 @@ mvBench is constructed from the following data sources:
 1. **WikiTables-TURL** (Deng et al., 2022): Available in [this GitHub repository](https://github.com/sunlab-osu/TURL/tree/release_ongoing) under Apache License 2.0.
 2. **Show Movie and Cricket Players** (Ahmad et al., 2023): Available in [this GitHub repository](https://github.com/qcri/RetClean).
 3. **Education Data**: Collected from the [Chicago Open Data Portal](https://data.cityofchicago.org/).
-4. **FIFA**: Sourced from [Kaggle FIFA World Cup dataset](https://www.kaggle.com/abecklas/fifa-world-cup).
-5. **Restaurants**: Sourced from [Kaggle Zomato Bangalore Restaurants dataset](https://www.kaggle.com/datasets/himanshupoddar/zomato-bangalore-restaurants), used in previous works including [IPM](https://github.com/EliasMei/IPM/blob/main/README.md) and [Can foundation model](https://arxiv.org/pdf/2205.09911).
+4. **FIFA**: Sourced from Kaggle, including [FIFA World Cup dataset](https://www.kaggle.com/abecklas/fifa-world-cup).
+5. **Restaurants**: Sourced from Kaggle, including [Zomato Bangalore Restaurants dataset](https://www.kaggle.com/datasets/himanshupoddar/zomato-bangalore-restaurants).
+
 
 After collection, the data is processed and annotated to form mvBench. Each dataset includes:
 - **queries.tsv**: Tuples with missing values (marked as "N/A"), each assigned a unique ID.
@@ -123,7 +124,7 @@ We propose a **two-stage confidence-aware imputation approach** that ensures acc
 #### Running Data Imputation
 To perform data imputation using the `impute.sh` script:
 
-1. **Configure the script**: Edit [`impute.sh`](./imputation/impute.sh) to set your parameters:
+You can edit [`impute.sh`](./imputation/impute.sh) to set your parameters:
 ```bash
 #!/bin/bash
 MODEL="gpt-4o"  # or "gpt-4", "gpt-3.5-turbo"
@@ -137,13 +138,6 @@ THRESHOLD=0.9  # Confidence threshold for strict mode
 
 # Retrieval results file path
 RETRIEVAL_RESULTS="/path/to/your/retrieval/results.txt"
-```
-
-2. **Run the imputation**:
-```bash
-cd imputation
-chmod +x impute.sh
-./impute.sh
 ```
 
 **Key Parameters:**
